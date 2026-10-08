@@ -129,7 +129,7 @@ This Nitro application can also be deployed to:
 - **AWS Lambda**: `nitro build --preset aws-lambda`
 - **DigitalOcean**: `nitro build --preset digitalocean`
 
-For more deployment options, see the [Nitro deployment documentation](https://nitro.build/docs/deploy).
+For more deployment options, see the [Nitro deployment documentation](https://nitro.build/).
 
 ## Configuration
 
