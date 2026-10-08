@@ -2,7 +2,7 @@ name: Dependabot Auto Merge
 
 on:
   schedule:
-    - cron: "44 3 * * *"
+    - cron: "43 3 * * *"
   check_suite:
     types: [completed]
   workflow_run:
