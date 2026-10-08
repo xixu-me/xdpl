@@ -1,6 +1,6 @@
 # XDPL
 
-A lightweight proxy server for DeepL Translator built with [Nitro](https://nitro.unjs.io/), providing a clean API interface to DeepL's translation services.
+A lightweight proxy server for DeepL Translator built with [Nitro](https://nitro.build/), providing a clean API interface to DeepL's translation services.
 
 ## Features
 
@@ -12,16 +12,18 @@ A lightweight proxy server for DeepL Translator built with [Nitro](https://nitro
 
 ## Tech Stack
 
-- **Framework**: [Nitro](https://nitro.unjs.io/) - Universal JavaScript server
+- **Framework**: [Nitro](https://nitro.build/) - Universal JavaScript server
 - **Runtime**: Node.js
 - **Package Manager**: pnpm
 - **TypeScript**: Full TypeScript support
 
 ## Getting Started
 
+This project pins Nitro 3 (`3.0.260903-beta`) to avoid unpatched dependencies in Nitro 2.
+
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 22.12+
 - pnpm (recommended) or npm
 
 ### Installation
@@ -52,7 +54,7 @@ The server will start on `http://localhost:3000`
 - `pnpm dev` - Start development server with hot reload
 - `pnpm build` - Build for production
 - `pnpm preview` - Preview production build locally
-- `pnpm prepare` - Prepare Nitro types
+- `pnpm test` - Verify development and production proxy behavior
 
 ## Usage
 
@@ -127,14 +129,17 @@ This Nitro application can also be deployed to:
 - **AWS Lambda**: `nitro build --preset aws-lambda`
 - **DigitalOcean**: `nitro build --preset digitalocean`
 
-For more deployment options, see the [Nitro deployment documentation](https://nitro.unjs.io/deploy).
+For more deployment options, see the [Nitro deployment documentation](https://nitro.build/).
 
 ## Configuration
 
 The main configuration is in `nitro.config.ts`:
 
 ```typescript
-export default defineNitroConfig({
+import { defineConfig } from "nitro";
+
+export default defineConfig({
+  serverDir: ".",
   routeRules: {
     "/**": {
       proxy: "https://www2.deepl.com/**",

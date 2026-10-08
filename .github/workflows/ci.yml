@@ -33,8 +33,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Audit production dependencies
-        run: pnpm audit --prod --audit-level=high --ignore-unfixable
+      - name: Audit all dependencies
+        run: pnpm audit --audit-level=low
 
       - name: Build Nitro app
         run: pnpm build
+
+      - name: Run regression tests
+        run: pnpm test
+
+      - name: Build Vercel deployment
+        run: pnpm build --preset vercel
